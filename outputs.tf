@@ -1,19 +1,18 @@
 output "vpc_info" {
-  value       = aws_vpc.main.id
-  sensitive   = false
+  value       = module.aws_vpc.vpc_info
 }
 
 output "avaiable_zone" {
-  value = slice(data.aws_availability_zones.available.names,0,2)
+  value = module.aws_vpc.avaiable_zone
 }
 
 output "default_vpc_info" {
-  value = data.aws_vpc.default
+  value = module.aws_vpc.default_vpc_info
 }
 
 #deafult vpc route table info for peering 
 output "routes_table_info" {
-  value = data.aws_route_table.main
+  value = module.aws_vpc.routes_table_info
 }
 
 output "sg_info" {
